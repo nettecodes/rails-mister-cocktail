@@ -1,8 +1,17 @@
-<h1>Limsa Cocktails</h1>
-<ul>
+<div class="banner-main"></div>
+<div class="container">
+<div class="cards">
   <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+  <%= link_to cocktail_path(cocktail) do %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= (cl_image_path cocktail.photo.key || "", height: 200, width: 300, crop: :thumb) if cocktail.photo.attached? %>');">
+      <%= cocktail.name %>
+    </div>
+    <% end %>
   <% end %>
-</ul>
 
-<%= link_to 'Create a new cocktail', new_cocktail_path %>
+  </div>
+</div>
+
+
+</div>
+
